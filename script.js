@@ -19,7 +19,17 @@ document.querySelector(`.check`).addEventListener(`click`, function(){
         document.querySelector(`.number`).textContent = number;
         document.querySelector(`.highscore`).textContent = score;
         }
-    }else if(guess > number){
+    }else if(guess !== number){
+        if(score > 0){
+            document.querySelector(`.message`).textContent = guess > number ? `Too high 😬` : `Too low 😆`;
+            score--;
+            document.querySelector(`.score`).textContent = score;
+        }else{
+            document.querySelector(`.message`).textContent = `Out of guess, gameover!😒`;
+        }
+    }
+    /* 
+    else if(guess > number){
         if(score > 0){
         document.querySelector(`.message`).textContent = `Too high 😬`;
         score--;
@@ -36,7 +46,9 @@ document.querySelector(`.check`).addEventListener(`click`, function(){
             document.querySelector(`.message`).textContent = `Out of guess, gameover!😒`;
         }
     }
+    */
 });
+
 document.querySelector(`.again`).addEventListener(`click`, function(){
      score = 20;
      number = Math.floor(Math.random()*20);
